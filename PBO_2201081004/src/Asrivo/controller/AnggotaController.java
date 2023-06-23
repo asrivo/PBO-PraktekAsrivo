@@ -7,6 +7,7 @@ import Asrivo.model.*;
 import Asrivo.dao.*;
 import java.util.*;
 import Asrivo.view.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -45,4 +46,40 @@ public class AnggotaController {
             tabelModel.addRow(row);
         }
     }
+    
+    public void insert(){
+        anggota = new Anggota();
+        anggota.setKodeAnggota(view.getTxtKodeAnggota().getText());
+        anggota.setNamaAnggota(view.getTxtNamaAnggota().getText());
+        anggota.setAlamat(view.getTxtAlamat().getText());
+        anggota.setJenisKelamin(view.getCboJenisKelamin().getSelectedItem().toString());
+        dao.insert(anggota);
+        JOptionPane.showMessageDialog(view, "Entri Data Ok");
+    }
+    
+    public void update(){
+        int index = view.getTabelAnggota().getSelectedRow();
+        anggota.setKodeAnggota(view.getTxtKodeAnggota().getText());
+        anggota.setNamaAnggota(view.getTxtNamaAnggota().getText());
+        anggota.setAlamat(view.getTxtAlamat().getText());
+        anggota.setJenisKelamin(view.getCboJenisKelamin().getSelectedItem().toString());
+        dao.update(index, anggota);
+        JOptionPane.showMessageDialog(view, "Update Data Ok");
+    }
+    
+    public void delete(){
+        int index = view.getTabelAnggota().getSelectedRow();
+        dao.delete(index);
+        JOptionPane.showMessageDialog(view, "Delete Data Ok");
+    }
+    
+    public void getAnggota(){
+        int index = view.getTabelAnggota().getSelectedRow();
+        anggota = dao.getAnggota(index);
+        view.getTxtKodeAnggota().setText(anggota.getKodeAnggota());
+        view.getTxtNamaAnggota().setText(anggota.getNamaAnggota());
+        view.getTxtAlamat().setText(anggota.getAlamat());
+        view.getCboJenisKelamin().setSelectedItem(anggota.getJenisKelamin());
+    }
+    
 }
