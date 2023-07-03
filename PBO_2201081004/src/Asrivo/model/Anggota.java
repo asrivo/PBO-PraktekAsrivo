@@ -6,16 +6,17 @@ package Asrivo.model;
 
 /**
  *
- * @author Asrivo MKP
+ * @author Dell
  */
 public class Anggota {
-    private String kodeAnggota;
-    private String namaAnggota;
-    private String alamat;
-    private String jenisKelamin;
-    
-    public Anggota() {
-    }
+        private String kodeAnggota;
+        private String namaAnggota;
+        private String alamat;
+        private String jenisKelamin;
+
+        
+   public Anggota() {
+     }
 
     public Anggota(String kodeAnggota, String namaAnggota, String alamat, String jenisKelamin) {
         this.kodeAnggota = kodeAnggota;
@@ -23,9 +24,8 @@ public class Anggota {
         this.alamat = alamat;
         this.jenisKelamin = jenisKelamin;
     }
-    
-   
-
+        
+          
     public String getKodeAnggota() {
         return kodeAnggota;
     }
@@ -57,7 +57,4 @@ public class Anggota {
     public void setJenisKelamin(String jenisKelamin) {
         this.jenisKelamin = jenisKelamin;
     }
-
 }
-
-

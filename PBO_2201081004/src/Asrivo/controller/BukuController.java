@@ -1,123 +1,83 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Asrivo.controller;
-
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Asrivo.model.*;
+import java.util.*;
 import javax.swing.JOptionPane;
+import Asrivo.view.*;
 import javax.swing.table.DefaultTableModel;
-import Asrivo.dao.BukuDaoImpl;
-import Asrivo.dao.BukuDao;
-import Asrivo.model.Buku;
-import Asrivo.view.FormBuku;
+import Asrivo.dao.*;
 
 /**
  *
- * @author Asrivo MKP
+ * @author ACER
  */
 public class BukuController {
     FormBuku view;
     Buku buku;
     BukuDao dao;
     
-
-    public BukuController(FormBuku view) {
-        this.view = view ;
+     public BukuController(FormBuku view) {
+        this.view = view;
         dao = new BukuDaoImpl();
     }
     
-    public void clear(){
+    public void clearForm() {
         view.getTxtKodeBuku().setText("");
-        view.getTxtJudulBuku().setText("");
+        view.getTxtJudul().setText("");
         view.getTxtPengarang().setText("");
         view.getTxtPenerbit().setText("");
-        view.getTxtTahunTerbit().setText("");
-    }
-    
-    public void insert(){
-        try {
-            buku = new Buku();
-            buku.setKodebuku(view.getTxtKodeBuku().getText());
-            buku.setJudulbuku(view.getTxtJudulBuku().getText());
-            buku.setPengarang(view.getTxtPengarang().getText());
-            buku.setPenerbit(view.getTxtPenerbit().getText());
-            buku.setTahunterbit(view.getTxtTahunTerbit().getText());
-            dao.insert(buku);
-            JOptionPane.showMessageDialog(view, "Successful Insert");
-        } catch (Exception ex) {
-            Logger.getLogger(BukuController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void search(){
-        try {
-            String kodebuku = view.getTxtKodeBuku().getText();
-            buku = dao.getBuku(kodebuku);
-            if(buku != null){
-                view.getTxtJudulBuku().setText(buku.getJudulbuku());
-                view.getTxtPenerbit().setText(buku.getPenerbit());
-                view.getTxtPengarang().setText(buku.getPengarang());
-                view.getTxtTahunTerbit().setText(buku.getTahunterbit());
-                
-            }else{
-                JOptionPane.showMessageDialog(view, "Data Not Found");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(BukuController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void update(){
-        try {
-            buku = new Buku();
-            buku.setKodebuku(view.getTxtKodeBuku().getText());
-            buku.setJudulbuku(view.getTxtJudulBuku().getText());
-            buku.setPenerbit(view.getTxtPenerbit().getText());
-            buku.setPengarang(view.getTxtPengarang().getText());
-            buku.setTahunterbit(view.getTxtTahunTerbit().getText());
-            dao.update(buku);
-            JOptionPane.showMessageDialog(view, "Successful Update");
-        } catch (Exception ex) {
-            Logger.getLogger(BukuController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void delete(){
-    try {
-        int pil = JOptionPane.showConfirmDialog(view, "Apakah Yakin Dihapus?");
-            if(pil == 0){
-                dao.delete(buku);
-                JOptionPane.showMessageDialog(view, "Successful Delete");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(AnggotaController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-    
-    public void viewTable(){
-        try {
-            DefaultTableModel tabelModel = (DefaultTableModel) view.getTabelBuku().getModel();
-            tabelModel.setRowCount(0);
-            List<Buku> bukuList = dao.getAll();
-            for(Buku buku : bukuList){
-                Object[] data = {
-                buku.getKodebuku(),
-                buku.getJudulbuku(),
-                buku.getPenerbit(),
-                buku.getPengarang(),
-                buku.getTahunterbit()
-                };
-                    tabelModel.addRow(data);
-                }
-            } catch (Exception ex) {
-            Logger.getLogger(BukuController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
        
+    }
+    
+     public void tampil(){
+        DefaultTableModel tabelModel = (DefaultTableModel) view.getTabelBuku().getModel();
+        tabelModel.setRowCount(0);
+        List<Buku> list = dao.getAll();
+        for (Buku a : list) {
+            Object[] row = {
+                a.getKodeBuku(),
+                a.getJudul(),
+                a.getPengarang(),
+                a.getPenerbit(),
+            };
+            tabelModel.addRow(row);
+        }
+    }
+     public void insert() {
+        buku = new Buku();
+        buku.setKodeBuku(view.getTxtKodeBuku().getText());
+        buku.setJudul(view.getTxtJudul().getText());
+        buku.setPengarang(view.getTxtPengarang().getText());
+        buku.setPenerbit(view.getTxtPenerbit().getText());
+        dao.insert(buku);
+        JOptionPane.showMessageDialog(view,"Entri Data OK");
+    }
+      public void update() {
+        int index = view.getTabelBuku().getSelectedRow();
+        buku = new Buku();
+        buku.setKodeBuku(view.getTxtKodeBuku().getText());
+        buku.setJudul(view.getTxtJudul().getText());
+        buku.setPengarang(view.getTxtPengarang().getText());
+        buku.setPenerbit(view.getTxtPenerbit().getText());
+        dao.update(index, buku);
+        JOptionPane.showMessageDialog(view,"Update Data OK");
+        
+    }
+      public void delete(){
+        int index = view.getTabelBuku().getSelectedRow();
+        dao.delete(index);
+        JOptionPane.showMessageDialog(view,"Delete Data OK");
+    }
+    
+    public void getBuku() {
+        int index = view.getTabelBuku().getSelectedRow();
+        buku = dao.getBuku(index);
+        view.getTxtKodeBuku().setText(buku.getKodeBuku());
+        view.getTxtJudul().setText(buku.getJudul());
+        view.getTxtPengarang().setText(buku.getPengarang());
+       
+    }
 }

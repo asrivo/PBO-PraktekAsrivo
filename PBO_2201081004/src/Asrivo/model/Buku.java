@@ -1,47 +1,44 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Asrivo.model;
 
 /**
  *
- * @author Asrivo MKP
+ * @author Dell
  */
 public class Buku {
-    private String kodebuku;
-    private String judulbuku;
-    private String pengarang;
-    private String penerbit;
-    private String tahunterbit;
+     private String kodeBuku;
+        private String judul;
+        private String pengarang;
+        private String penerbit;
 
-    public Buku(String kodebuku, String judulbuku, String pengarang, String penerbit, String tahunterbit) {
-        this.kodebuku = kodebuku;
-        this.judulbuku = judulbuku;
+        
+   public Buku() {
+     }
+
+    public Buku(String kodebuku, String judul, String pengarang, String penerbit) {
+        this.kodeBuku = kodebuku;
+        this.judul = judul;
         this.pengarang = pengarang;
         this.penerbit = penerbit;
-        this.tahunterbit = tahunterbit;
     }
 
-    public Buku() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public String getKodeBuku() {
+        return kodeBuku;
     }
 
-    public String getKodebuku() {
-        return kodebuku;
+    public void setKodeBuku(String kodeBuku) {
+        this.kodeBuku = kodeBuku;
     }
 
-    public void setKodebuku(String kodebuku) {
-        this.kodebuku = kodebuku;
+    public String getJudul() {
+        return judul;
     }
 
-    public String getJudulbuku() {
-        return judulbuku;
-    }
-
-    public void setJudulbuku(String judulbuku) {
-        this.judulbuku = judulbuku;
+    public void setJudul(String judul) {
+        this.judul = judul;
     }
 
     public String getPengarang() {
@@ -59,35 +56,7 @@ public class Buku {
     public void setPenerbit(String penerbit) {
         this.penerbit = penerbit;
     }
-
-    public String getTahunterbit() {
-        return tahunterbit;
-    }
-
-    public void setTahunterbit(String tahunterbit) {
-        this.tahunterbit = tahunterbit;
-    }
-
-    public Object getKodeBuku() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    public Object getJudulBuku() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    public Object getTahunTerbit() {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    public void setKodeBuku(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-
-    public void setJudulBuku(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-    
-    
-    
+        
+          
+   
 }

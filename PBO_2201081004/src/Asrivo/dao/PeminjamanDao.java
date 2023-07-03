@@ -4,17 +4,17 @@
  */
 package Asrivo.dao;
 
-import Asrivo.model.Buku;
+import Asrivo.model.Peminjaman;
 import java.util.List;
 
 /**
  *
  * @author Dell
  */
-public interface BukuDao {
-        void insert (Buku buku);
-        void update(int index, Buku buku);
+public interface PeminjamanDao {
+        void insert(Peminjaman peminjaman);
+        void update(int index, Peminjaman peminjaman);
         void delete(int index);
-        Buku getBuku(int index);
-        List <Buku>getAll();
+        Peminjaman getPeminjaman(int index);
+        List <Peminjaman>getAll();
 }

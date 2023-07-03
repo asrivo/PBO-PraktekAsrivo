@@ -4,7 +4,7 @@
  */
 package Asrivo.view;
 
-import Asrivo.controller.BukuController;
+import Asrivo.controller.PeminjamanController;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -13,33 +13,33 @@ import javax.swing.JTextField;
  *
  * @author Dell
  */
-public class FormBuku extends javax.swing.JFrame {
+public class FormPeminjaman extends javax.swing.JFrame {
 
     /**
-     * Creates new form FormBuku
+     * Creates new form FormPeminjaman
      */
-     BukuController controller;
-    public FormBuku() {
+    PeminjamanController controller;
+    public FormPeminjaman() {
         initComponents();
-        controller = new BukuController(this);
+        controller = new PeminjamanController(this);
         controller.clearForm();
         controller.tampil();
     }
-    
-    public JTable getTabelBuku() {
-        return TabelBuku;
+
+    public JTable getTabelPeminjaman() {
+        return TabelPeminjaman;
     }
 
-    public void setTabelBuku(JTable TabelBuku) {
-        this.TabelBuku = TabelBuku;
+    public void setTabelPeminjaman(JTable TabelPeminjaman) {
+        this.TabelPeminjaman = TabelPeminjaman;
     }
 
-    public JTextField getTxtJudul() {
-        return TxtJudul;
+    public JTextField getTxtKodeAnggota() {
+        return TxtKodeAnggota;
     }
 
-    public void setTxtJudul(JTextField TxtJudul) {
-        this.TxtJudul = TxtJudul;
+    public void setTxtKodeAnggota(JTextField TxtKodeAnggota) {
+        this.TxtKodeAnggota = TxtKodeAnggota;
     }
 
     public JTextField getTxtKodeBuku() {
@@ -50,20 +50,20 @@ public class FormBuku extends javax.swing.JFrame {
         this.TxtKodeBuku = TxtKodeBuku;
     }
 
-    public JTextField getTxtPenerbit() {
-        return TxtPenerbit;
+    public JTextField getTxtTanggalKembali() {
+        return TxtTanggalKembali;
     }
 
-    public void setTxtPenerbit(JTextField TxtPenerbit) {
-        this.TxtPenerbit = TxtPenerbit;
+    public void setTxtTanggalKembali(JTextField TxtTanggalKembali) {
+        this.TxtTanggalKembali = TxtTanggalKembali;
     }
 
-    public JTextField getTxtPengarang() {
-        return TxtPengarang;
+    public JTextField getTxtTanggalPinjam() {
+        return TxtTanggalPinjam;
     }
 
-    public void setTxtPengarang(JTextField TxtPengarang) {
-        this.TxtPengarang = TxtPengarang;
+    public void setTxtTanggalPinjam(JTextField TxtTanggalPinjam) {
+        this.TxtTanggalPinjam = TxtTanggalPinjam;
     }
 
     public JButton getBtnCancel() {
@@ -90,16 +90,9 @@ public class FormBuku extends javax.swing.JFrame {
         this.btnInsert = btnInsert;
     }
 
-    public JButton getBtnUpdate() {
-        return btnUpdate;
-    }
-
-    public void setBtnUpdate(JButton btnUpdate) {
-        this.btnUpdate = btnUpdate;
-    }
+   
     
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,28 +106,28 @@ public class FormBuku extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        TxtKodeBuku = new javax.swing.JTextField();
-        TxtJudul = new javax.swing.JTextField();
-        TxtPengarang = new javax.swing.JTextField();
-        TxtPenerbit = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TabelBuku = new javax.swing.JTable();
+        TabelPeminjaman = new javax.swing.JTable();
         btnInsert = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        TxtKodeAnggota = new javax.swing.JTextField();
+        TxtKodeBuku = new javax.swing.JTextField();
+        TxtTanggalPinjam = new javax.swing.JTextField();
+        TxtTanggalKembali = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Kode Buku");
+        jLabel1.setText("Kode Anggota");
 
-        jLabel2.setText("Judul");
+        jLabel2.setText("Kode Buku");
 
-        jLabel3.setText("Pengarang");
+        jLabel3.setText("Tanggal Pinjam");
 
-        jLabel4.setText("Penerbit");
+        jLabel4.setText("Tanggal Kembali");
 
-        TabelBuku.setModel(new javax.swing.table.DefaultTableModel(
+        TabelPeminjaman.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -145,12 +138,12 @@ public class FormBuku extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        TabelBuku.addMouseListener(new java.awt.event.MouseAdapter() {
+        TabelPeminjaman.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabelBukuMouseClicked(evt);
+                TabelPeminjamanMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(TabelBuku);
+        jScrollPane1.setViewportView(TabelPeminjaman);
 
         btnInsert.setText("INSERT");
         btnInsert.addActionListener(new java.awt.event.ActionListener() {
@@ -180,71 +173,95 @@ public class FormBuku extends javax.swing.JFrame {
             }
         });
 
+        TxtKodeAnggota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtKodeAnggotaActionPerformed(evt);
+            }
+        });
+
+        TxtKodeBuku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtKodeBukuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnInsert)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnUpdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelete)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancel))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1))
-                        .addGap(57, 57, 57)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtKodeBuku)
-                            .addComponent(TxtPenerbit)
-                            .addComponent(TxtPengarang)
-                            .addComponent(TxtJudul))))
-                .addGap(19, 19, 19))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtTanggalKembali)
+                                    .addComponent(TxtTanggalPinjam)
+                                    .addComponent(TxtKodeBuku)
+                                    .addComponent(TxtKodeAnggota)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnInsert)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnUpdate)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDelete)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnCancel)))
+                        .addGap(0, 43, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(TxtKodeAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2))
                     .addComponent(TxtKodeBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(TxtJudul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(TxtPengarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(TxtPenerbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtTanggalPinjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(TxtTanggalKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInsert)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
                     .addComponent(btnCancel))
-                .addGap(41, 41, 41)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TxtKodeAnggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtKodeAnggotaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtKodeAnggotaActionPerformed
+
+    private void TxtKodeBukuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtKodeBukuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtKodeBukuActionPerformed
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         // TODO add your handling code here:
@@ -262,20 +279,20 @@ public class FormBuku extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        controller.delete();
+         controller.delete();
         controller.clearForm();
         controller.tampil();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
-        controller.clearForm();
+         controller.clearForm();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void TabelBukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelBukuMouseClicked
+    private void TabelPeminjamanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelPeminjamanMouseClicked
         // TODO add your handling code here:
-        controller.getBuku();
-    }//GEN-LAST:event_TabelBukuMouseClicked
+        controller.getPeminjaman();
+    }//GEN-LAST:event_TabelPeminjamanMouseClicked
 
     /**
      * @param args the command line arguments
@@ -294,30 +311,30 @@ public class FormBuku extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormBuku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPeminjaman.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormBuku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPeminjaman.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormBuku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPeminjaman.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormBuku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormPeminjaman.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormBuku().setVisible(true);
+                new FormPeminjaman().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TabelBuku;
-    private javax.swing.JTextField TxtJudul;
+    private javax.swing.JTable TabelPeminjaman;
+    private javax.swing.JTextField TxtKodeAnggota;
     private javax.swing.JTextField TxtKodeBuku;
-    private javax.swing.JTextField TxtPenerbit;
-    private javax.swing.JTextField TxtPengarang;
+    private javax.swing.JTextField TxtTanggalKembali;
+    private javax.swing.JTextField TxtTanggalPinjam;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInsert;
@@ -328,4 +345,8 @@ public class FormBuku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    public Object getTxt() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

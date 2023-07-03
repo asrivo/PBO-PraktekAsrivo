@@ -4,14 +4,14 @@
  */
 package Asrivo.controller;
 import Asrivo.model.*;
-import Asrivo.dao.*;
 import java.util.*;
-import Asrivo.view.*;
 import javax.swing.JOptionPane;
+import Asrivo.view.*;
 import javax.swing.table.DefaultTableModel;
+import Asrivo.dao.*;
 /**
  *
- * @author Asrivo MKP
+ * @author LAB-MM
  */
 public class AnggotaController {
     FormAnggota view;
@@ -20,10 +20,10 @@ public class AnggotaController {
     
     public AnggotaController(FormAnggota view) {
         this.view = view;
-        dao = new AnggotaDaoImpl();  
+        dao = new AnggotaDaoImpl();
     }
     
-    public void clearForm(){
+    public void clearForm() {
         view.getTxtKodeAnggota().setText("");
         view.getTxtNamaAnggota().setText("");
         view.getTxtAlamat().setText("");
@@ -33,47 +33,47 @@ public class AnggotaController {
     }
     
     public void tampil(){
-        DefaultTableModel tabelModel =(DefaultTableModel) view.getTabelAnggota().getModel();
+        DefaultTableModel tabelModel = (DefaultTableModel) view.getTabelAnggota().getModel();
         tabelModel.setRowCount(0);
-        List<Anggota> List = dao.getAll();
-        for (Anggota a : List) {
+        List<Anggota> list = dao.getAll();
+        for (Anggota a : list) {
             Object[] row = {
                 a.getKodeAnggota(),
                 a.getNamaAnggota(),
                 a.getAlamat(),
-                a.getJenisKelamin()
+                a.getJenisKelamin(),
             };
             tabelModel.addRow(row);
         }
     }
-    
-    public void insert(){
+    public void insert() {
         anggota = new Anggota();
         anggota.setKodeAnggota(view.getTxtKodeAnggota().getText());
         anggota.setNamaAnggota(view.getTxtNamaAnggota().getText());
         anggota.setAlamat(view.getTxtAlamat().getText());
         anggota.setJenisKelamin(view.getCboJenisKelamin().getSelectedItem().toString());
         dao.insert(anggota);
-        JOptionPane.showMessageDialog(view, "Entri Data Ok");
+        JOptionPane.showMessageDialog(view,"Entri Data OK");
     }
     
-    public void update(){
+    public void update() {
         int index = view.getTabelAnggota().getSelectedRow();
+        anggota = new Anggota();
         anggota.setKodeAnggota(view.getTxtKodeAnggota().getText());
         anggota.setNamaAnggota(view.getTxtNamaAnggota().getText());
         anggota.setAlamat(view.getTxtAlamat().getText());
         anggota.setJenisKelamin(view.getCboJenisKelamin().getSelectedItem().toString());
         dao.update(index, anggota);
-        JOptionPane.showMessageDialog(view, "Update Data Ok");
+        JOptionPane.showMessageDialog(view,"Update Data OK");
+        
     }
     
     public void delete(){
         int index = view.getTabelAnggota().getSelectedRow();
-        dao.delete(index);
-        JOptionPane.showMessageDialog(view, "Delete Data Ok");
+        JOptionPane.showMessageDialog(view,"Delete Data OK");
     }
     
-    public void getAnggota(){
+    public void getAnggota() {
         int index = view.getTabelAnggota().getSelectedRow();
         anggota = dao.getAnggota(index);
         view.getTxtKodeAnggota().setText(anggota.getKodeAnggota());
@@ -81,5 +81,4 @@ public class AnggotaController {
         view.getTxtAlamat().setText(anggota.getAlamat());
         view.getCboJenisKelamin().setSelectedItem(anggota.getJenisKelamin());
     }
-    
 }

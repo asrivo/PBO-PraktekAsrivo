@@ -3,39 +3,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Asrivo.dao;
-
-import Asrivo.model.Buku;
+import Asrivo.model.Peminjaman;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author Dell
  */
-public class BukuDaoImpl implements BukuDao{
-      private List<Buku> data = new ArrayList<>();
-    
-        public BukuDaoImpl(){
-            data.add(new Buku ("001","Buku Java","Pak Ervan","Politeknik Negeri Padang"));
-        }
+public class PeminjamanDaoImpl implements PeminjamanDao{
+     private List<Peminjaman> data = new ArrayList<>();
         
-        public   void insert(Buku buku) {
-           data.add(buku);
+        public   void insert(Peminjaman peminjaman) {
+           data.add(peminjaman);
        }
        
-        public   void update(int index, Buku buku){
-            data.set(index, buku);
+        public   void update(int index, Peminjaman peminjaman){
+            data.set(index,peminjaman);
         }
         
         public   void delete(int index){
             data.remove(index);
         }
         
-        public   Buku getBuku(int index){
+        public   Peminjaman getPeminjaman(int index){
             return data.get(index);
         }
         
-        public   List <Buku>getAll(){
+        public   List <Peminjaman>getAll(){
             return data;
         }
 }
