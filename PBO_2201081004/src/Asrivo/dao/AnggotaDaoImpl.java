@@ -15,7 +15,7 @@ public class AnggotaDaoImpl implements AnggotaDao{
     private List<Anggota> data = new ArrayList<>();
     
         public AnggotaDaoImpl(){
-            data.add(new Anggota ("001","Asrivo","Sijunjung","L"));
+            data.add(new Anggota ("001","Asrivo","Sijunjung","P"));
         }
         
         public   void insert(Anggota anggota) {
