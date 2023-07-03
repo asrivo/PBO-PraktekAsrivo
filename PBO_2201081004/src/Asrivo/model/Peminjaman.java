@@ -6,7 +6,7 @@ package Asrivo.model;
 
 /**
  *
- * @author Dell
+ * @author Asrivo MKP
  */
 public class Peminjaman {
     private String kodeanggota;

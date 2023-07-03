@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  *
- * @author Dell
+ * @author Asrivo MKP
  */
 public class PeminjamanDaoImpl implements PeminjamanDao{
      private List<Peminjaman> data = new ArrayList<>();

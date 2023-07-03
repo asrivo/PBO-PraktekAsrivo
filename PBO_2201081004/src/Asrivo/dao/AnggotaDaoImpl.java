@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Dell
+ * @author Asrivo MKP
  */
 public class AnggotaDaoImpl implements AnggotaDao{
     private List<Anggota> data = new ArrayList<>();

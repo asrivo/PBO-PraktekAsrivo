@@ -12,7 +12,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author Dell
+ * @author Asrivo MKP
  */
 public class FormAnggota extends javax.swing.JFrame {
   

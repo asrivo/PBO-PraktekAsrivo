@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Dell
+ * @author Asrivo MKP
  */
 public interface BukuDao {
         void insert (Buku buku);

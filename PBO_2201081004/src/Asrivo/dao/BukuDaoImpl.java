@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Dell
+ * @author Asrivo MKP
  */
 public class BukuDaoImpl implements BukuDao{
       private List<Buku> data = new ArrayList<>();

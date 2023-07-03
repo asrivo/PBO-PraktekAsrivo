@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import Asrivo.dao.*;
 /**
  *
- * @author LAB-MM
+ * @author Asrivo MKP
  */
 public class AnggotaController {
     FormAnggota view;

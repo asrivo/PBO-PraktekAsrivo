@@ -6,7 +6,7 @@ package Asrivo.model;
 
 /**
  *
- * @author Dell
+ * @author Asrivo MKP
  */
 public class Buku {
      private String kodeBuku;

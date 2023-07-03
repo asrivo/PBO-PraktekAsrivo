@@ -7,7 +7,7 @@ import Asrivo.model.Anggota;
 import java.util.List;
 /**
  *
- * @author Dell
+ * @author Asrivo MKP
  */
 public interface AnggotaDao {
         void insert(Anggota anggota);

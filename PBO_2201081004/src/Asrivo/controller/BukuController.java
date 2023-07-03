@@ -12,7 +12,7 @@ import Asrivo.dao.*;
 
 /**
  *
- * @author ACER
+ * @author Asrivo MKP
  */
 public class BukuController {
     FormBuku view;
