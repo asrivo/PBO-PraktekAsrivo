@@ -14,10 +14,13 @@ import java.util.List;
  */
 public class BukuDaoImpl implements BukuDao{
       private List<Buku> data = new ArrayList<>();
+      
+      public BukuDaoImpl() {
+      data.add(new Buku("B001", "Pascal", "Andi", "Andi"));
+      data.add(new Buku("B002", "Pascal", "Andi", "Andi"));
+      }
     
-        public BukuDaoImpl(){
-            data.add(new Buku ("001","Buku Java","Pak Ervan","Politeknik Negeri Padang"));
-        }
+        
         
         public   void insert(Buku buku) {
            data.add(buku);

@@ -12,10 +12,10 @@ import java.util.ArrayList;
  * @author Asrivo MKP
  */
 public class AnggotaDaoImpl implements AnggotaDao{
-    private List<Anggota> data = new ArrayList<>();
+    private final List<Anggota> data = new ArrayList<>();
     
         public AnggotaDaoImpl(){
-            data.add(new Anggota ("001","Asrivo","Sijunjung","P"));
+            data.add(new Anggota ("A001","Asrivo","Sijunjung","P"));
         }
         
         public   void insert(Anggota anggota) {

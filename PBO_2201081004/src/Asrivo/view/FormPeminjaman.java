@@ -6,6 +6,7 @@ package Asrivo.view;
 
 import Asrivo.controller.PeminjamanController;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -24,6 +25,7 @@ public class FormPeminjaman extends javax.swing.JFrame {
         controller = new PeminjamanController(this);
         controller.clearForm();
         controller.tampil();
+        controller.isicombo();
     }
 
     public JTable getTabelPeminjaman() {
@@ -34,21 +36,15 @@ public class FormPeminjaman extends javax.swing.JFrame {
         this.TabelPeminjaman = TabelPeminjaman;
     }
 
-    public JTextField getTxtKodeAnggota() {
-        return TxtKodeAnggota;
+    public JComboBox<String> getCboAnggota() {
+        return cboAnggota;
     }
 
-    public void setTxtKodeAnggota(JTextField TxtKodeAnggota) {
-        this.TxtKodeAnggota = TxtKodeAnggota;
+    public JComboBox<String> getCboBuku() {
+        return cboBuku;
     }
 
-    public JTextField getTxtKodeBuku() {
-        return TxtKodeBuku;
-    }
-
-    public void setTxtKodeBuku(JTextField TxtKodeBuku) {
-        this.TxtKodeBuku = TxtKodeBuku;
-    }
+   
 
     public JTextField getTxtTanggalKembali() {
         return TxtTanggalKembali;
@@ -89,7 +85,8 @@ public class FormPeminjaman extends javax.swing.JFrame {
     public void setBtnInsert(JButton btnInsert) {
         this.btnInsert = btnInsert;
     }
-
+    
+  
    
     
     
@@ -102,6 +99,8 @@ public class FormPeminjaman extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        TxtKodeAnggota = new javax.swing.JTextField();
+        TxtKodeBuku = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -112,10 +111,22 @@ public class FormPeminjaman extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        TxtKodeAnggota = new javax.swing.JTextField();
-        TxtKodeBuku = new javax.swing.JTextField();
         TxtTanggalPinjam = new javax.swing.JTextField();
         TxtTanggalKembali = new javax.swing.JTextField();
+        cboAnggota = new javax.swing.JComboBox<>();
+        cboBuku = new javax.swing.JComboBox<>();
+
+        TxtKodeAnggota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtKodeAnggotaActionPerformed(evt);
+            }
+        });
+
+        TxtKodeBuku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtKodeBukuActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,13 +140,13 @@ public class FormPeminjaman extends javax.swing.JFrame {
 
         TabelPeminjaman.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Kode Anggota", "Kode Buku", "Tanggal Pinjam", "Tanggal Kembali", "Selisih"
             }
         ));
         TabelPeminjaman.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -173,17 +184,9 @@ public class FormPeminjaman extends javax.swing.JFrame {
             }
         });
 
-        TxtKodeAnggota.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtKodeAnggotaActionPerformed(evt);
-            }
-        });
+        cboAnggota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        TxtKodeBuku.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtKodeBukuActionPerformed(evt);
-            }
-        });
+        cboBuku.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,8 +210,8 @@ public class FormPeminjaman extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TxtTanggalKembali)
                                     .addComponent(TxtTanggalPinjam)
-                                    .addComponent(TxtKodeBuku)
-                                    .addComponent(TxtKodeAnggota)))
+                                    .addComponent(cboAnggota, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cboBuku, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(btnInsert)
@@ -227,12 +230,13 @@ public class FormPeminjaman extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(TxtKodeAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(24, 24, 24)
                         .addComponent(jLabel2))
-                    .addComponent(TxtKodeBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cboAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -249,7 +253,7 @@ public class FormPeminjaman extends javax.swing.JFrame {
                     .addComponent(btnCancel))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         pack();
@@ -339,6 +343,8 @@ public class FormPeminjaman extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnInsert;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cboAnggota;
+    private javax.swing.JComboBox<String> cboBuku;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -346,7 +352,5 @@ public class FormPeminjaman extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public Object getTxt() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 }

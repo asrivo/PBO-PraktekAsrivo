@@ -6,6 +6,7 @@ package Asrivo.controller;
 import Asrivo.dao.*;
 import Asrivo.model.*;
 import Asrivo.view.*;
+import java.text.ParseException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,21 +18,37 @@ public class PeminjamanController {
     FormPeminjaman view;
     Peminjaman peminjaman;
     PeminjamanDao dao;
+    AnggotaDao anggotaDao;
+    BukuDao bukuDao;
     
     public PeminjamanController(FormPeminjaman view) {
         this.view = view;
         dao = new PeminjamanDaoImpl();
+        anggotaDao = new AnggotaDaoImpl();
+        bukuDao = new BukuDaoImpl();
     }
     
     public void clearForm(){
-        view.getTxtKodeAnggota().setText("");
-        view.getTxtKodeBuku().setText("");
         view.getTxtTanggalPinjam().setText("");
         view.getTxtTanggalKembali().setText("");
         
     }
     
-    public void tampil() {
+    public void isicombo(){
+    view.getCboAnggota().removeAllItems();
+    List<Anggota>ListAnggota = anggotaDao.getAll();
+    for (Anggota anggota : ListAnggota) {
+        view.getCboAnggota().addItem(anggota.getKodeAnggota());
+    }
+         
+    view.getCboBuku().removeAllItems();
+    List<Buku> ListBuku = bukuDao.getAll();
+    for (Buku buku : ListBuku) {
+        view.getCboBuku().addItem(buku.getKodeBuku());
+    }
+    }
+    
+    public void tampil() throws ParseException {
         DefaultTableModel tabelModel = (DefaultTableModel) view.getTabelPeminjaman().getModel();
         tabelModel.setRowCount(0);
         List<Peminjaman> list = dao.getAll();
@@ -40,7 +57,8 @@ public class PeminjamanController {
                 a.getKodeanggota(),
                 a.getKodebuku(),
                 a.getTglpinjam(),
-                a.getTglkembali()
+                a.getTglkembali(),
+                a.getSelisih()     
             };
             tabelModel.addRow(row);
         }
@@ -48,8 +66,8 @@ public class PeminjamanController {
     
     public void insert(){
         peminjaman = new Peminjaman();
-        peminjaman.setKodeanggota(view.getTxtKodeAnggota().getText());
-        peminjaman.setKodebuku(view.getTxtKodeBuku().getText());
+        peminjaman.setKodeanggota(view.getCboAnggota().getSelectedItem().toString());
+        peminjaman.setKodebuku(view.getCboBuku().getSelectedItem().toString());
         peminjaman.setTglpinjam(view.getTxtTanggalPinjam().getText());
         peminjaman.setTglkembali(view.getTxtTanggalKembali().getText());
         dao.insert(peminjaman);
@@ -59,8 +77,8 @@ public class PeminjamanController {
     public void getPeminjaman(){
         int index = view.getTabelPeminjaman().getSelectedRow();
         peminjaman = dao.getPeminjaman(index);
-        view.getTxtKodeAnggota().setText(peminjaman.getKodeanggota());
-        view.getTxtKodeBuku().setText(peminjaman.getKodebuku());
+        view.getCboAnggota().setSelectedItem(peminjaman.getKodeanggota());
+        view.getCboBuku().setSelectedItem(peminjaman.getKodebuku());
         view.getTxtTanggalPinjam().setText(peminjaman.getTglpinjam());
         view.getTxtTanggalKembali().setText(peminjaman.getTglkembali());
     }
@@ -68,8 +86,8 @@ public class PeminjamanController {
      public void update(){
         int index = view.getTabelPeminjaman().getSelectedRow();
         peminjaman = new Peminjaman();
-        peminjaman.setKodeanggota(view.getTxtKodeAnggota().getText());
-        peminjaman.setKodebuku(view.getTxtKodeBuku().getText());
+        peminjaman.setKodeanggota(view.getCboAnggota().getSelectedItem().toString());
+        peminjaman.setKodebuku(view.getCboBuku().getSelectedItem().toString());
         peminjaman.setTglpinjam(view.getTxtTanggalPinjam().getText());
         peminjaman.setTglkembali(view.getTxtTanggalKembali().getText());
         dao.update(index,peminjaman);
